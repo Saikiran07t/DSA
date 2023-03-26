@@ -1,0 +1,67 @@
+//{ Driver Code Starts
+import java.io.*;
+import java.util.*;
+
+class RodCutting {
+
+    public static void main(String args[]) {
+        Scanner sc = new Scanner(System.in);
+        int t = sc.nextInt();
+        while (t-- > 0) {
+            int n = sc.nextInt();
+            int[] arr = new int[n];
+            for (int i = 0; i < n; i++) arr[i] = sc.nextInt();
+
+            Solution ob = new Solution();
+            System.out.println(ob.cutRod(arr, n));
+        }
+    }
+}
+
+// } Driver Code Ends
+
+
+class Solution{
+    public int cutRod(int price[], int n) {
+        //code here
+        
+    //     int [][] dp = new int[n][n+1];
+    //     int N=n;
+    // for(int i=0; i<=N; i++){
+    //     dp[0][i] = i*price[0];
+    // }
+    
+    // for(int ind=1; ind<N; ind++){
+    //     for(int length =0; length<=N; length++){
+        
+    //          int notTaken = 0 + dp[ind-1][length];
+    
+    //          int taken = Integer.MIN_VALUE;
+    //          int rodLength = ind+1;
+    //          if(rodLength <= length)
+    //             taken = price[ind] + dp[ind][length-rodLength];
+        
+    //          dp[ind][length] = Math.max(notTaken,taken);   
+    //     }
+    // }
+    
+    // return dp[N-1][N];
+    
+    //Aditya Verma DP
+    
+     int l = price.length;
+    int[][] dp = new int[l+1][n+1];
+    
+    for (int i = 1; i <= l; i++) {
+        for (int j = 1; j <= n; j++) {
+            if (i <= j) {
+                dp[i][j] = Math.max(dp[i-1][j], price[i-1] + dp[i][j-i]);
+            } else {
+                dp[i][j] = dp[i-1][j];
+            }
+        }
+    }
+    
+    return dp[l][n];
+    }
+}
