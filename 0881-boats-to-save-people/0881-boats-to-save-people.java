@@ -20,4 +20,6 @@ class Solution {
         }
         return boatCount;
     }
+    //T.C : O(N*Log N) Log N for sorting and there are N people
+    //S.C : O(1)
 }
