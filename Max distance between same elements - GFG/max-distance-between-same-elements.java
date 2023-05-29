@@ -35,8 +35,8 @@ class Solution
 	    int maxDistance=0;
 	    for(int index=0;index<size;index++){
 	        if(map.containsKey(arr[index])){
-	            int previousOccurance=map.get(arr[index]);
-	            maxDistance=Math.max(maxDistance,index-previousOccurance);
+	            int firstOccurance=map.get(arr[index]);
+	            maxDistance=Math.max(maxDistance,index-firstOccurance);
 	        }
 	        else{
 	            map.put(arr[index],index);
