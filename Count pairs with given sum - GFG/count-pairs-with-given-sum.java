@@ -37,6 +37,7 @@ class Solution {
         Map<Integer,Integer> hmap = new HashMap<>();
         int size=n;
         for(int index=0;index<size;index++){
+            //if two elements adds up to k then increment count
                if(hmap.containsKey(k-arr[index])) {
                 countOfPairs+=hmap.get(k-arr[index]);
             }
