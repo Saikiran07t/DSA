@@ -49,7 +49,8 @@ class GfG
     //   return longestLength;
       
        
-       //optimal
+       //optimal using HashMap.
+       //This is the optimal solution if array has +ve and -ve integers but acts as better solution for array with +ve and zeros
        Map<Integer,Integer> map = new HashMap<>();
        int maxLength=0,prefixSum=0,k=0;
        for(int index=0;index<n;index++){
