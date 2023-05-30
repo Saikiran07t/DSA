@@ -1,5 +1,6 @@
 class Solution {
     public int firstUniqChar(String s) {
+        //Optimal Approach using Hashing
         Map<Character,Integer> hmap = new HashMap<>();
         int size=s.length();
         for(int index=0;index<size;index++){
