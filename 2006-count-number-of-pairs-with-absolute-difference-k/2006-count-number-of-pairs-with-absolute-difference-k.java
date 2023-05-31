@@ -32,11 +32,9 @@ class Solution {
         for(int i=0;i<nums.length;i++){
             freq[nums[i]]++;
         }
-        // for(int i=freq.length-1;i>=k;i--){
+    
         for(int i=k+1;i<freq.length;i++){
-            // if(freq[i]>0 && freq[i-k]>0){
                 res+=freq[i]*freq[i-k];
-            // }
         }
         return res;
     }
