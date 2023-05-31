@@ -45,14 +45,18 @@ class Solution
             if(map.containsKey(prefixSum-k)) { 
                    count+=map.get(prefixSum-k);
                }
+               
+            // Increment the frequency of the current cumulative sum in the HashMap
+            map.put(prefixSum, map.getOrDefault(prefixSum, 0) + 1);
             
+                  /*this can be replaced with map.getOrDefault(prefixSum,0)+1
                   if(map.containsKey(prefixSum)){
                       int value=map.get(prefixSum);
                       map.put(prefixSum,value+1);
                     }
                   else{
                    map.put(prefixSum,1);
-                  }
+                  }*/
              
            
        }
