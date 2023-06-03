@@ -70,7 +70,7 @@ class Solution{
       
        
        //optimal using HashMap.
-       //This is the optimal solution if array has +ve and -ve integers but acts as better solution for array with +ve and zeros
+       //This is the optimal solution if array has +ve and -ve integers
       Map<Integer,Integer> map = new HashMap<>();
       int maxLength=0,prefixSum=0;
       for(int index=0;index<N;index++){
@@ -84,8 +84,8 @@ class Solution{
           if(!map.containsKey(prefixSum))  map.put(prefixSum,index);
       }
       return maxLength;
-    }
     
+    }
     
 }
 
