@@ -50,19 +50,35 @@ class GfG
       
        
        //optimal using HashMap.
-       //This is the optimal solution if array has +ve and -ve integers but acts as better solution for array with +ve and zeros
-       Map<Integer,Integer> map = new HashMap<>();
-       int maxLength=0,prefixSum=0,k=0;
-       for(int index=0;index<n;index++){
-           prefixSum+=arr[index];
-           if(prefixSum==k)  maxLength=index+1; //as it is 0 based indexing so 
-           else{
-               if(map.containsKey(prefixSum)) { 
-                   maxLength= Math.max(maxLength,index-map.get(prefixSum));//update max length with first occurance of prefixSum
-               }
-               else map.put(prefixSum,index);
-           }
-       }
-       return maxLength;
+    //   //This is the optimal solution if array has +ve and -ve integers but acts as better solution for array with +ve and zeros
+    //   Map<Integer,Integer> map = new HashMap<>();
+    //   int maxLength=0,prefixSum=0,k=0;
+    //   for(int index=0;index<n;index++){
+    //       prefixSum+=arr[index];
+    //       if(prefixSum==k)  maxLength=index+1; //as it is 0 based indexing so 
+    //       else{
+    //           if(map.containsKey(prefixSum)) { 
+    //               maxLength= Math.max(maxLength,index-map.get(prefixSum));//update max length with first occurance of prefixSum
+    //           }
+    //           else map.put(prefixSum,index);
+    //       }
+    //   }
+    //   return maxLength;
+    
+       //optimi
+        Map<Integer,Integer> map = new HashMap<>();
+      int maxLength=0,prefixSum=0,K=0;
+      for(int index=0;index<n;index++){
+          prefixSum+=arr[index];
+          if(prefixSum==K)  maxLength=index+1; //as it is 0 based indexing so 
+          else{
+              if(map.containsKey(prefixSum-K)) { 
+                  maxLength= Math.max(maxLength,index-map.get(prefixSum-K));//update max length with first occurance of prefixSum
+              }
+          }
+          if(!map.containsKey(prefixSum))  map.put(prefixSum,index);
+      }
+      return maxLength;
+    
     }
 }
