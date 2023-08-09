@@ -40,6 +40,7 @@ class Solution {
                 if(right-left+1>curMax){
                     curMax=right-left+1;
                     curMaxString =s.substring(left,right+1); 
+                  //right+1 as subString method second parameter is excluded
                 }
                 left--;
                 right++;
