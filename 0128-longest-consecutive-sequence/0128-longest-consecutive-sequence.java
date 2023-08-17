@@ -1,19 +1,23 @@
 class Solution {
     public int longestConsecutive(int[] nums) {
-        //optimal
-        Set<Integer> set = new HashSet<>();
-        for(int num : nums) set.add(num);
+        int size=nums.length;
         int longestLength=0;
-        for(int num : nums){
-            if(!set.contains(num-1)){
-                int curNum=num;
-                int curCount=1;
-                // now iterate through set and find the consecutive no's
-                while(set.contains(curNum+1)){
-                    curNum+=1;
-                     curCount+=1;
+        Set<Integer> set = new TreeSet<>();
+        //add all the elements to set
+        for(int num : nums)
+            set.add(num);
+        
+        
+        for(int index=0;index<size;index++){
+            int curElement = nums[index];
+            int prevElement = curElement-1;
+            int curCount=1;
+            if(!set.contains(prevElement)){
+                while(set.contains(curElement+1)){
+                    curElement++;
+                    curCount++;
                 }
-                longestLength=Math.max(longestLength,curCount);
+                longestLength = Math.max(longestLength,curCount);
             }
         }
         return longestLength;
