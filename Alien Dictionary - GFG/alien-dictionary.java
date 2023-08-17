@@ -137,13 +137,22 @@ class Solution
         }
 
         List<Integer> topo = topoSort(K, adj);
-        String ans = "";
+        // String ans = "";
+        // for (int it : topo) {
+        //     // adding 'a' to get corresponding character from number
+        //     ans = ans + (char)(it + (int)('a'));
+        // }
+        
+            StringBuilder result = new StringBuilder();
+
         for (int it : topo) {
-            // adding 'a' to get corresponding character from number
-            ans = ans + (char)(it + (int)('a'));
+        // adding 'a' to get corresponding character from number
+         result.append((char)(it+(int)('a')));
         }
 
-        return ans;
+
+
+        return result.toString();
 
     }
 }
