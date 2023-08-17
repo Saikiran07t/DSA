@@ -120,13 +120,16 @@ class Solution
             adj.add(new ArrayList<>());
         }
 
-
+        //iterate till last second as we are considering pairs
         for (int i = 0; i < N - 1; i++) {
             String s1 = dict[i];
             String s2 = dict[i + 1];
+            //take min of two strings to compare and then iterate over that length
             int len = Math.min(s1.length(), s2.length());
             for (int ptr = 0; ptr < len; ptr++) {
+                //if char are not equal mark edge and exit from condition
                 if (s1.charAt(ptr) != s2.charAt(ptr)) {
+                    //subtracting 'a' to get corresonding character number
                     adj.get(s1.charAt(ptr) - 'a').add(s2.charAt(ptr) - 'a');
                     break;
                 }
@@ -136,6 +139,7 @@ class Solution
         List<Integer> topo = topoSort(K, adj);
         String ans = "";
         for (int it : topo) {
+            // adding 'a' to get corresponding character from number
             ans = ans + (char)(it + (int)('a'));
         }
 
