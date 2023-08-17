@@ -11,13 +11,12 @@ class Solution {
         for(int index=0;index<size;index++){
             int curElement = nums[index];
             int prevElement = curElement-1;
-           
+            int curCount=1;
             if(!set.contains(prevElement)){
-                 int curCount=1;
-         // now iterate through set and find the consecutive no's
+             // now iterate through set and find the consecutive no's
                 while(set.contains(curElement+1)){
-                    curElement++;
-                    curCount++;
+                    curElement+=1;
+                    curCount+=1;
                 }
                 longestLength = Math.max(longestLength,curCount);
             }
