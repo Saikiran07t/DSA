@@ -8,8 +8,8 @@ class Solution {
             set.add(num);
         
         
-        for(int index=0;index<size;index++){
-            int curElement = nums[index];
+        for(int num : nums){
+            int curElement = num;
             int prevElement = curElement-1;
             int curCount=1;
             if(!set.contains(prevElement)){
