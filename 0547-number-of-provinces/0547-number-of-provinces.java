@@ -13,9 +13,18 @@ class Solution {
         }
         
         boolean[] visited = new boolean[n];
+        //using BFS
+        // for(int i=0;i<n;i++){
+        //     if(!visited[i]){
+        //         bfs(i,adjList,visited);
+        //         noOfProvinces++;
+        //     }
+        // }
+        
+        //using DFS
         for(int i=0;i<n;i++){
             if(!visited[i]){
-                bfs(i,adjList,visited);
+                dfs(i,adjList,visited);
                 noOfProvinces++;
             }
         }
@@ -23,18 +32,28 @@ class Solution {
       
     }
     
-    public void bfs(int vertex,List<List<Integer>> adjList,boolean visited[]){
-        Queue<Integer> queue = new LinkedList<>();
-        queue.add(vertex);
-        visited[vertex]=true;
+//     public void bfs(int vertex,List<List<Integer>> adjList,boolean visited[]){
+//         Queue<Integer> queue = new LinkedList<>();
+//         queue.add(vertex);
+//         visited[vertex]=true;
         
-        while(!queue.isEmpty()){
-            int cur=queue.poll();
-            for(int neighbor : adjList.get(cur)){
-                if(!visited[neighbor]){
-                    visited[neighbor]=true;
-                    queue.add(neighbor);   
-                }
+//         while(!queue.isEmpty()){
+//             int cur=queue.poll();
+//             for(int neighbor : adjList.get(cur)){
+//                 if(!visited[neighbor]){
+//                     visited[neighbor]=true;
+//                     queue.add(neighbor);   
+//                 }
+//             }
+//         }
+//     }
+    
+    public void dfs(int vertex,List<List<Integer>> adjList,boolean[] visited){
+        visited[vertex]=true;
+        List<Integer> neighbors = adjList.get(vertex);
+        for(int neighbor : neighbors){
+            if(!visited[neighbor]){
+                dfs(neighbor,adjList,visited);
             }
         }
     }
