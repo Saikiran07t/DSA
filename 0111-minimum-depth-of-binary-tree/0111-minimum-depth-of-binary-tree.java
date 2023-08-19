@@ -33,10 +33,20 @@ class Solution {
         // return depth;
         
         //using DFS
-        if(root == null) return 0;
-        if(root.left==null && root.right == null) return 1;
-        int leftHeight = root.left!=null ?minDepth(root.left) : Integer.MAX_VALUE;
-        int rightHeight = root.right!=null? minDepth(root.right): Integer.MAX_VALUE;
-        return 1+Math.min(leftHeight,rightHeight);
+        // if(root == null) return 0;
+        // if(root.left==null && root.right == null) return 1;
+        // int leftHeight = root.left!=null ?minDepth(root.left) : Integer.MAX_VALUE;
+        // int rightHeight = root.right!=null? minDepth(root.right): Integer.MAX_VALUE;
+        // return 1+Math.min(leftHeight,rightHeight);
+        
+        //using DFS Approach -2
+              if(root == null){
+            return 0;
+        }
+        if(root.left == null || root.right == null){
+            return 1+Math.max(minDepth(root.left), minDepth(root.right));
+        }
+        return 1+Math.min(minDepth(root.left), minDepth(root.right));
+
     }
 }
