@@ -1,52 +1,57 @@
-class TrieNode {
-    boolean isCompleteWord;
-    TrieNode[] children;
+class TrieNode{
     
-    public TrieNode() {
-        isCompleteWord = false; // when the word is complete (mark that node as true)
-        children = new TrieNode[26]; // for 26 possible Childrens (for next letter)
+    TrieNode[] children;
+    boolean isEnd;
+    
+    public TrieNode(){
+        children = new TrieNode[26];
+        isEnd=false;
     }
+    
 }
 
+
+
+
 class Trie {
-    TrieNode root;
-    
+
+    private TrieNode root;
     public Trie() {
         root = new TrieNode();
     }
     
     public void insert(String word) {
         TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            int index = c - 'a';
-            if (node.children[index] == null) {
-                node.children[index] = new TrieNode();
+        for(int i=0;i<word.length();i++){
+            char ch = word.charAt(i);
+            if(node.children[ch-'a']==null){
+                node.children[ch-'a'] = new TrieNode();
             }
-            node = node.children[index];
+            node = node.children[ch-'a'];
         }
-        node.isCompleteWord = true;
+         node.isEnd=true;
     }
     
     public boolean search(String word) {
         TrieNode node = root;
-        for (char c : word.toCharArray()) {
-            int index = c - 'a';
-            if (node.children[index] == null) {
+        for(int i=0;i<word.length();i++){
+            char ch = word.charAt(i);
+            if(node.children[ch-'a']==null){
                 return false;
             }
-            node = node.children[index];
+            node = node.children[ch-'a'];
         }
-        return node.isCompleteWord;
+        return node.isEnd;
     }
     
     public boolean startsWith(String prefix) {
-        TrieNode node = root;
-        for (char c : prefix.toCharArray()) {
-            int index = c - 'a';
-            if (node.children[index] == null) {
+          TrieNode node = root;
+        for(int i=0;i<prefix.length();i++){
+            char ch = prefix.charAt(i);
+            if(node.children[ch-'a']==null){
                 return false;
             }
-            node = node.children[index];
+            node = node.children[ch-'a'];
         }
         return true;
     }
