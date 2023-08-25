@@ -4,8 +4,8 @@ class TrieNode{
     boolean isEnd;
     
     public TrieNode(){
-        children = new TrieNode[26];
-        isEnd=false;
+        children = new TrieNode[26];// for 26 possible Childrens (for next letter)
+        isEnd=false; // when the word is complete (mark that node as true)
     }
     
 }
